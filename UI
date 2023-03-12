@@ -1664,6 +1664,7 @@ function Library:Initiate()
     ImageButton_2.AutoButtonColor = false
     ImageButton_2.Image = "rbxassetid://12752031602"
     ImageButton_2.ImageColor3 = Color3.fromRGB(0, 122, 255)
+    ImageButton_2.Active = false
 
 
     local SearchFrame = Instance.new("ScrollingFrame")
