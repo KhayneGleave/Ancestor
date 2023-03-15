@@ -181,8 +181,9 @@ function Library:Initiate()
         Main.Parent = Notice
         Main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
         Main.BorderSizePixel = 0
-        Main.Position = UDim2.new(0.5, -150, 0.5, -48)
-        Main.Size = UDim2.new(0, 300, 0, 28)
+	Main.AnchorPoint = Vector2.new(.5,.5)
+        Main.Position = UDim2.new(0.5,0,.5,0)
+        Main.Size = UDim2.new(0, 300, 0, 200)
         Main.ZIndex = 5
         UICorner_1.Parent=Main;
 
@@ -212,7 +213,7 @@ function Library:Initiate()
         Quit.Parent = Notice
         Quit.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
         Quit.BorderSizePixel = 0
-        Quit.Position = UDim2.new(0.5, 20, 0.5, 0)
+        Quit.Position = UDim2.new(0.5, 20, 0.62, 0)
         Quit.Selectable = false
         Quit.Size = UDim2.new(0, 130, 0, 40)
         Quit.ZIndex = 5
@@ -253,7 +254,7 @@ function Library:Initiate()
         Aux.Parent = Notice
         Aux.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
         Aux.BorderSizePixel = 0
-        Aux.Position = UDim2.new(0.5, -150, 0.5, 0)
+        Aux.Position = UDim2.new(0.5, -150, 0.62, 0)
         Aux.Selectable = false
         Aux.Size = UDim2.new(0, 130, 0, 40)
         Aux.ZIndex = 5
