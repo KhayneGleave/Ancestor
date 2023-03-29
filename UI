@@ -923,6 +923,7 @@ function Library:Initiate()
                                     InputConnection:Disconnect()InputConnection=nil;
                                     return;
                                 end;
+
                                 if not Processed and InputConnection then 
                                     Input_2.Text=Key.KeyCode.Name;
                                     Default=Key.KeyCode;
@@ -937,6 +938,7 @@ function Library:Initiate()
             
                             end;
                             InputConnection:Disconnect()InputConnection=nil;
+                            Callback(Key.KeyCode);
                         end);
                     end);
                     CallbackConnection=game:GetService'UserInputService'.InputBegan:Connect(function(Key,Processed)
