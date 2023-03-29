@@ -929,10 +929,10 @@ function Library:Initiate()
     
                                     Debounce=false;
                                 end;
-                            elseif not Key.UserInputType.Name=='Keyboard' then
-                                if Input_2.Text == '...' then
-                                    Input_2.Text = OldBind
-                                end
+                            else
+                               
+                                Input_2.Text = OldBind
+            
                             end;
                             InputConnection:Disconnect()InputConnection=nil;
                         end);
