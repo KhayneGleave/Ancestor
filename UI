@@ -929,8 +929,8 @@ function Library:Initiate()
                                     task.wait(.5);
                                     Debounce=false;
                                 end;
-                            else
-                                if Input_2.Text =='...' then
+                            elseif not Key.UserInputType.Name=='Keyboard' then
+                                if Input_2.Text == '...' then
                                     Input_2.Text = OldBind
                                 end
                             end;
