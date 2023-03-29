@@ -916,6 +916,7 @@ function Library:Initiate()
                         Input_2.Text='...';
                         Debounce=true;
                         InputConnection=game:GetService'UserInputService'.InputBegan:Connect(function(Key,Processed)
+
                             if Key.UserInputType.Name=='Keyboard'then 
                                 if Key.KeyCode==Enum.KeyCode.Backspace then 
                                     Input_2.Text='None';
@@ -927,6 +928,7 @@ function Library:Initiate()
                                 if not Processed and InputConnection then 
                                     Input_2.Text=Key.KeyCode.Name;
                                     Default=Key.KeyCode;
+                                    Callback(Key.KeyCode);
                                     task.wait(.5)
                                     Debounce=false;
  
@@ -938,7 +940,6 @@ function Library:Initiate()
             
                             end;
                             InputConnection:Disconnect()InputConnection=nil;
-                            Callback(Key.KeyCode);
                         end);
                     end);
                     CallbackConnection=game:GetService'UserInputService'.InputBegan:Connect(function(Key,Processed)
