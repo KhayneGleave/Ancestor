@@ -926,11 +926,8 @@ function Library:Initiate()
                                 if not Processed and InputConnection then 
                                     Input_2.Text=Key.KeyCode.Name;
                                     Default=Key.KeyCode;
-
-                                    task.spawn(function()
-                                        task.wait(.5)
-                                        Debounce=false;
-                                    end)
+                                    task.wait(.5)
+                                    Debounce=false;
  
                                 end;
 
