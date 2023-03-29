@@ -939,9 +939,10 @@ function Library:Initiate()
             
                             end;
                             InputConnection:Disconnect()InputConnection=nil;
-                            return Default
 
                         end);
+
+                        return Default
                     end);
                     CallbackConnection=game:GetService'UserInputService'.InputBegan:Connect(function(Key,Processed)
                         if not Processed and CallbackConnection and Key.KeyCode==Default then 
