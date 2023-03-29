@@ -926,7 +926,7 @@ function Library:Initiate()
                                 if not Processed and InputConnection then 
                                     Input_2.Text=Key.KeyCode.Name;
                                     Default=Key.KeyCode;
-                                    task.wait(.5);
+    
                                     Debounce=false;
                                 end;
                             elseif not Key.UserInputType.Name=='Keyboard' then
