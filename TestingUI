@@ -1309,9 +1309,8 @@ function Library:Initiate()
                                     end;
                                 end;
 
-                                Debounce = true 
-                                task.wait(1)
                             end;
+
                             TweenService:Create(MainButton,TweenInfo.new(0.3),{Rotation=135}):Play();
                             TweenService:Create(ScrollingFrame_2, TweenInfo.new(0.05), {CanvasSize = ScrollingFrame_2.CanvasSize + UDim2.new(0,0,0,150)}):Play();
                             ScrollingFrame2.Visible=true;
@@ -1346,6 +1345,10 @@ function Library:Initiate()
                             ScrollingFrame2.Size = UDim2.new(0, 470, 0.05, 5);
                             ScrollingFrame2.Visible = false;
                         end;
+
+                        Debounce = true 
+                        task.wait(1)
+                        
                     end;
 
                     local function TextChanged()
