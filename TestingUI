@@ -1291,9 +1291,12 @@ function Library:Initiate()
                         -- ScrollingFrame.CanvasSize  = ScrollingFrame.CanvasSize  + UDim2.new(0,0,0,25)
                         -- ScrollingFrame2.Size=ScrollingFrame2.Size + UDim2.new(0,0,0,25)
                     end;
+
+                    local Debounce = false
                     local function ToggleVis()
+
                         Toggled=not Toggled
-                        if Toggled then
+                        if Toggled and not Debounce then
                             if Playerlist then 
                                 Options={};
                                 for i,v in next,game.Players:GetPlayers()do
@@ -1305,6 +1308,9 @@ function Library:Initiate()
                                         Options[#Options+1]=tostring(v);
                                     end;
                                 end;
+
+                                Debounce = true 
+                                task.wait(1)
                             end;
                             TweenService:Create(MainButton,TweenInfo.new(0.3),{Rotation=135}):Play();
                             TweenService:Create(ScrollingFrame_2, TweenInfo.new(0.05), {CanvasSize = ScrollingFrame_2.CanvasSize + UDim2.new(0,0,0,150)}):Play();
