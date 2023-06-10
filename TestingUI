@@ -1235,7 +1235,15 @@ function Library:Initiate()
                         TextButton_2.TextSize = 14.000
                         TextButton_2.TextWrapped = true
                         TextButton_2.AutoButtonColor=false;
+
+                        local Debounce = false
                         TextButton_2.MouseButton1Click:Connect(function()
+                            
+                            if Debounce then
+
+                                return
+
+                            end
 
                             Selected=Selected+1;
                             TweenService:Create(MainButton,TweenInfo.new(0.3),{Rotation=0}):Play();
@@ -1276,8 +1284,15 @@ function Library:Initiate()
                             TweenService:Create(ScrollingFrame_2, TweenInfo.new(0.3), {CanvasSize = ScrollingFrame_2.CanvasSize - UDim2.new(0,0,0,Total+150)}):Play();
                             TweenService:Create(Sections_2, TweenInfo.new(0.3), {Size = Sections_2.Size - UDim2.new(0,0,0,Total+80)}):Play();
                             Total=0;
-                            task.wait(.3)
+                            task.spawn(function()
 
+                                Debounce = true 
+                                task.wait(1)
+                                Debounce = false
+                            
+                            end)
+
+                            task.wait(.3)
                             ScrollingFrame2.Size = UDim2.new(0, 470, 0.05, 5);
                             ScrollingFrame2.Visible = false;
                         end)
@@ -1292,11 +1307,16 @@ function Library:Initiate()
                         -- ScrollingFrame2.Size=ScrollingFrame2.Size + UDim2.new(0,0,0,25)
                     end;
 
-                    local Debounce = false
                     local function ToggleVis()
 
+                        if Debounce then 
+
+                            return
+
+                        end
+
                         Toggled=not Toggled
-                        if Toggled and not Debounce then
+                        if Toggled then
                             if Playerlist then 
                                 Options={};
                                 for i,v in next,game.Players:GetPlayers()do
@@ -1348,7 +1368,8 @@ function Library:Initiate()
 
                         Debounce = true 
                         task.wait(1)
-                        
+                        Debounce = false
+
                     end;
 
                     local function TextChanged()
