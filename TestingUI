@@ -1188,6 +1188,15 @@ function Library:Initiate()
                     UIListLayout2.Parent = Frame_3
                     UIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
                     UIListLayout2.Padding=UDim.new(0,2)
+
+                    local UIListLayout2=Instance.new'UIListLayout';
+                    UIListLayout2.Parent = ScrollingFrame2
+                    UIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
+                    UIListLayout2.Padding=UDim.new(0,2)
+
+                    local Padding = Instance.new('UIPadding', ScrollingFrame2)
+                    Padding.PaddingLeft = UDim.new(.02, 0)
+
                     local UIC1=Instance.new'UICorner'UIC1.Parent=ScrollingFrame2
 
                     local Toggled=false;
