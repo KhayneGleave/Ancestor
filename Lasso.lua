@@ -15,7 +15,7 @@ function Lasso.new(Folder, Owner)
     return setmetatable({
 
         UI              = Instance.new('ScreenGui', CoreGui),
-        InitialPosition = nil
+        InitialPosition = nil,
         Folder          = Folder,
         Owner           = Owner
 
