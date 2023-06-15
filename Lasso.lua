@@ -10,12 +10,14 @@ getgenv().LassoEnded = false
 
 Lasso.__index = Lasso
 
-function Lasso.new()
+function Lasso.new(Folder, Owner)
 
     return setmetatable({
 
         UI              = Instance.new('ScreenGui', CoreGui),
         InitialPosition = nil
+        Folder          = Folder,
+        Owner           = Owner
 
     }, Lasso)
 
@@ -105,9 +107,9 @@ function Lasso:IsObjectInLassoFrame(ScreenPosition, Frame)
 
 end
 
-function Lasso:GetContainerInstances(Folder, Player)
+function Lasso:GetContainerInstances()
 
-    local Children, ObjectsInFrame, ObjectsNotInFrame = Folder:GetChildren(), {}, {}
+    local Children, ObjectsInFrame, ObjectsNotInFrame = self.Folder:GetChildren(), {}, {}
 
     for i = 1, #Children do
 
@@ -116,7 +118,7 @@ function Lasso:GetContainerInstances(Folder, Player)
         local Owner = Object:FindFirstChild('Owner')
         local Main = Object:FindFirstChild('Main')
         
-        if Owner and Owner.Value == Player and Main then 
+        if Owner and Owner.Value == self.Owner and Main then 
 
             local ObjectScreenPosition = Camera:WorldToScreenPoint(Main.CFrame.p)
 
