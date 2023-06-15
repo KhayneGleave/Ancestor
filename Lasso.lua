@@ -6,6 +6,8 @@ local Player = Players.LocalPlayer
 local Camera = workspace.CurrentCamera
 local Mouse = Player:GetMouse()
 
+getgenv().LassoEnded = false
+
 Lasso.__index = Lasso
 
 function Lasso.new()
@@ -42,6 +44,12 @@ function Lasso:InitiateDrag()
 
         self.InitialPosition = nil
         self.UI:Destroy()
+
+        if not LassoEnded then
+
+            self:Create()
+
+        end
 
     end)}
 
