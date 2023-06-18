@@ -1245,6 +1245,24 @@ function Library:Initiate()
 
                             end
 
+                            ScrollingFrame2.CanvasSize = UDim2.new(0, 450, 0.05, 1.3)
+                            ScrollingFrame2.ScrollBarThickness=0;
+                            TweenService:Create(ScrollingFrame2,TweenInfo.new(0.3),{Size = UDim2.new(0,0,0,0)}):Play();
+                            TweenService:Create(ScrollingFrame_2, TweenInfo.new(0.3), {CanvasSize = ScrollingFrame_2.CanvasSize - UDim2.new(0,0,0,Total+150)}):Play();
+                            TweenService:Create(Sections_2, TweenInfo.new(0.3), {Size = Sections_2.Size - UDim2.new(0,0,0,Total+80)}):Play();
+                            Total=0;
+                            task.spawn(function()
+
+                                Debounce = true 
+                                task.wait(1)
+                                Debounce = false
+                            
+                            end)
+
+                            task.wait(.3)
+                            ScrollingFrame2.Size = UDim2.new(0, 470, 0.05, 5);
+                            ScrollingFrame2.Visible = false;
+
                             Selected=Selected+1;
                             TweenService:Create(MainButton,TweenInfo.new(0.3),{Rotation=0}):Play();
                             Input.Text=TextButton_2.Text;
@@ -1278,23 +1296,6 @@ function Library:Initiate()
                                 end;
                             end;
 
-                            ScrollingFrame2.CanvasSize = UDim2.new(0, 450, 0.05, 1.3)
-                            ScrollingFrame2.ScrollBarThickness=0;
-                            TweenService:Create(ScrollingFrame2,TweenInfo.new(0.3),{Size = UDim2.new(0,0,0,0)}):Play();
-                            TweenService:Create(ScrollingFrame_2, TweenInfo.new(0.3), {CanvasSize = ScrollingFrame_2.CanvasSize - UDim2.new(0,0,0,Total+150)}):Play();
-                            TweenService:Create(Sections_2, TweenInfo.new(0.3), {Size = Sections_2.Size - UDim2.new(0,0,0,Total+80)}):Play();
-                            Total=0;
-                            task.spawn(function()
-
-                                Debounce = true 
-                                task.wait(1)
-                                Debounce = false
-                            
-                            end)
-
-                            task.wait(.3)
-                            ScrollingFrame2.Size = UDim2.new(0, 470, 0.05, 5);
-                            ScrollingFrame2.Visible = false;
                         end)
 
                         UICorner_6.Parent = TextButton_2;
