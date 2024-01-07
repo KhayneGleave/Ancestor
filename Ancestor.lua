@@ -142,12 +142,6 @@ local NPCChattingClient, CharacterFloat, PropertyPurchasingClient, LoadSaveClien
 
 local RequestLoad, RequestSave, GetMetaData, ClientMayLoad, SendUserNotice, ClientExpandedProperty, ClientPurchasedProperty, ClientInteracted, ClientIsDragging, RemoteProxy, PromptChat, PlayerChatted, SetChattingValue, TestPing, ClientPlacedStructure, SelectLoadPlot, ClientPlacedBlueprint, DestroyStructure, Donate = ReplicatedStorage.LoadSaveRequests.RequestLoad, ReplicatedStorage.LoadSaveRequests.RequestSave, ReplicatedStorage.LoadSaveRequests.GetMetaData, ReplicatedStorage.LoadSaveRequests.ClientMayLoad, ReplicatedStorage.Notices.SendUserNotice, ReplicatedStorage.PropertyPurchasing.ClientExpandedProperty, ReplicatedStorage.PropertyPurchasing.ClientPurchasedProperty, ReplicatedStorage.Interaction.ClientInteracted, ReplicatedStorage.Interaction.ClientIsDragging, ReplicatedStorage.Interaction.RemoteProxy, ReplicatedStorage.NPCDialog.PromptChat, ReplicatedStorage.NPCDialog.PlayerChatted, ReplicatedStorage.NPCDialog.SetChattingValue, ReplicatedStorage.TestPing, ReplicatedStorage.PlaceStructure.ClientPlacedStructure, ReplicatedStorage.PropertyPurchasing.SelectLoadPlot,  ReplicatedStorage.PlaceStructure.ClientPlacedBlueprint, ReplicatedStorage.Interaction.DestroyStructure, ReplicatedStorage.Transactions.ClientToServer.Donate
 
--- if not getgenv().Lasso then
-
-    getgenv().Lasso = loadstring(readfile('Lasso.txt'))().new(PlayerModels, Player)--loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/KhayneGleave/Ancestor/main/Lasso.lua'))()
-
--- end
-
 if not Ancestor.Unsecure then 
 
     SettingsClient = getsenv(PlayerGui.SettingsGUI.SettingsClient)
