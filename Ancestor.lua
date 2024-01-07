@@ -178,10 +178,6 @@ local BoxItemNames = {
 
 if not getgenv().UserCanInteract then
 
-    getgenv().CharacterFloatOld = CharacterFloat.isInWater
-    getgenv().UserCanInteract = InteractionPermission.UserCanInteract
-    getgenv().BetterGraphicsEnabled = false
-
 end
 
 getgenv().LoadedTrees = {
