@@ -159,8 +159,6 @@ end
 
 local AxeFolder, LogModels = (Ancestor.Unsecure and Purchasables.Tools.AllTools) or ReplicatedStorage.AxeClasses, workspace.LogModels
 
-local LoadPass = getupvalue(LoadSaveClient.saveSlot, 12)
-
 local VehicleColours = {'Dark red','Sand red','Sand yellow metalic','Lemon metalic','Gun metalic','Earth orange','Earth yellow','Brick yellow','Rust','Really black','Faded green','Sand green','Black metalic','Dark grey metallic','Dark grey','Silver','Medium stone grey','Mid grey', 'Hot pink'}
 
 local ConfigurationIsIntact = pcall(function()
