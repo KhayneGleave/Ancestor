@@ -1,0 +1,69 @@
+--> Creator: Ancestor/CryptedCorner <--
+
+--> Services <--
+local runService: RunService = game:GetService('RunService')
+
+--> Initiate Maid <--
+local Maid: {[any]: any} = {}
+
+--> Properties <--
+Maid.__index = Maid
+Maid.Class = 'Singleton'
+Maid.connections = {}
+Maid.Scope = 'Both'
+
+--> Load singleton <--
+function Maid:new(singleton: (...any) -> ())
+	self.singleton = singleton
+	return setmetatable(self, Maid)
+end
+
+--> Verifies if the connection is valid <--
+function Maid:verify(name: string): boolean
+	return rawget(self.connections, name)
+end
+
+--> for debugging purposes <--
+function Maid:traceback(...: (...any) -> ())
+	if runService:IsStudio() and shared.debugMode then
+		return warn(`[MaidService]:`, ...)
+	end
+end
+
+--> registers a new connection to the Maid <--
+function Maid:register(name: string, callback: (...any) -> ()): boolean
+	if (self:verify(name)) then
+		return self:traceback(`{name} is already registered`)
+	end
+	self.connections[name] = callback
+	local registered = self:verify(name)
+	if registered then
+		self:traceback(`{name} was registered`)
+	end
+	return registered
+end
+
+--> deregisters an connection from the Maid <--
+function Maid:deregister(name: string)
+	local connection = self:verify(name)
+	if not connection then
+		return
+	end
+	if typeof(connection) == 'RBXScriptConnection' then
+		connection:Disconnect()
+	end
+	rawset(self.connections, name, nil)
+	self:traceback(`{name} was deregistered`)
+	return self:verify(name)
+end
+
+--> Clears and removes all registers from the Maid <--
+function Maid:clearRegister(Callback: (...any) -> ()): boolean
+	for connection in next, self.connections do 
+		self:deregister(connection)
+	end
+	return true, self:traceback(`register was cleared`)
+end
+
+return Maid
+
