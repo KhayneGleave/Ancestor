@@ -1,0 +1,56 @@
+--> Creator: Ancestor/CryptedCorner <--
+
+--> Services <--
+local userInputService: UserInputService = Services.UserInputService
+local contextActionService: ContextActionService = Services.ContextActionService
+local runService: RunService = Services.RunService
+
+--> Initiate Input <--
+local Input: {[any]: any} = {}
+
+--> Properties <--
+Input.__index = Input
+Input.Class = 'Singleton'
+Input.connections = {}
+Input.Scope = 'Client'
+
+--> Load singleton <--
+function Input:new(singleton: (...any) -> ())
+	return setmetatable(self, Input)
+end
+
+--> Verifies if the connection is valid <--
+function Input:verify(name: string): boolean
+	return rawget(self.connections, name)
+end
+
+--> registers a new callback to a key map  <--
+function Input:register(name : string, callback: (...any) -> (), isMobile: boolean, Map: SharedTable, Position : UDim2): ...any
+	if (self:verify(name)) then
+		return self:traceback(`{name} is already registered`)
+	end
+	local Bind: any? = contextActionService:BindAction(name, callback, false, Map.Keyboard, Map.Controller)
+	self.connections[name] = true
+	return Bind
+end
+
+--> deregisters callback from Input  <--
+function Input:deregister(name : string): ...any
+	if not (self:verify(name)) then
+		return self:traceback(`{name} is not a valid register`)
+	end
+	contextActionService:UnbindAction(name)
+	self.connections[name] = nil
+	return true
+end
+
+
+--> deregisters callback from Input  <--
+function Input:clearRegister(name : string): ...any
+	for connection in next, self.connections do 
+		self:deregister(connection)
+	end
+	return true
+end
+
+return Input
