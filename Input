@@ -1,9 +1,8 @@
 --> Creator: Ancestor/CryptedCorner <--
 
 --> Services <--
-local userInputService: UserInputService = Services.UserInputService
-local contextActionService: ContextActionService = Services.ContextActionService
-local runService: RunService = Services.RunService
+local userInputService: UserInputService = game:GetService('UserInputService')
+local contextActionService: ContextActionService = game:GetService('ContextActionService')
 
 --> Initiate Input <--
 local Input: {[any]: any} = {}
@@ -27,7 +26,7 @@ end
 --> registers a new callback to a key map  <--
 function Input:register(name : string, callback: (...any) -> (), isMobile: boolean, Map: SharedTable, Position : UDim2): ...any
 	if (self:verify(name)) then
-		return self:traceback(`{name} is already registered`)
+	   return
 	end
 	local Bind: any? = contextActionService:BindAction(name, callback, false, Map.Keyboard, Map.Controller)
 	self.connections[name] = true
@@ -37,7 +36,7 @@ end
 --> deregisters callback from Input  <--
 function Input:deregister(name : string): ...any
 	if not (self:verify(name)) then
-		return self:traceback(`{name} is not a valid register`)
+	   return
 	end
 	contextActionService:UnbindAction(name)
 	self.connections[name] = nil
