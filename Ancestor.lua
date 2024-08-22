@@ -1,3 +1,7 @@
+--//Outdated and patched source//--
+
+--DISCONTINUED--
+
 local Executor = identifyexecutor()
 
 getgenv().Ancestor_Loaded = false
